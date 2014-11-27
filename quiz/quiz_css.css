@@ -1,0 +1,47 @@
+body{
+background-color: lightblue;
+font-family: Helvetica, sans, comic;
+}
+
+label {
+margin-left: 0.5em;
+cursor: pointer;
+}
+
+#personalia{
+	height: 50%;
+	width: 40%;
+
+}
+
+
+.questionPicture.img{
+
+	border: 0;
+	align: right;
+	
+	
+}
+
+#resultButton{
+
+	hover-color: red;
+	height: 50px;
+	width: 100px;
+	text-color: green;
+	font-family: Helvetica, san-serif;
+
+}
+
+#a2,#a3,#a4,#a5,#a6,#a7,#a8,#a9,#a10,#resultButton{
+
+    display: none;
+
+}
+
+.questions{
+
+	width: 600px; 
+	height: 500px; 
+
+}
