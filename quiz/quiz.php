@@ -10,11 +10,10 @@
 		<!--<script src="quiz_js.js" type="text/JavaScript"></script>-->
 		<link rel="stylesheet" href="quiz_css.css" type="text/css">
 
-		<h1>Quiz: Norsk politikk</h1>
 	</head>
 
 	<body>
-		
+		<h1>Quiz: Norsk politikk</h1>
 		<div id="headerText">
 			Hvor mye vet du om norsk politikk?<br/>
 			Quizen presenterer deg for en rekke relevante spørsmål innen norsk politikk.<br/>

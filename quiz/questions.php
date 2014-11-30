@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 ?>
@@ -9,13 +10,13 @@ session_start();
 		<!--<script src="quiz_js.js" type="text/JavaScript"></script>-->
 		<link rel="stylesheet" href="quiz_css.css" type="text/css">
 
-		<h1>Quiz: Norsk politikk</h1>
-
-		<h2>Spørsmål:</h2>
+		
 	</head>
 
 	<body>
+		<h1>Quiz: Norsk politikk</h1>
 
+		<!--Get the form-input from prev page, and print/echo it to page-->
 		<?php
 			
 				$_SESSION['getName'] = $_POST['name'];
@@ -25,26 +26,29 @@ session_start();
 			
 		?>
 
-		<script src="http://code.jquery.com/jquery-1.4.4.min.js" type="text/javascript"></script>
+		<!--C-->
+		
 
-				<script type="text/javascript">
+		<script type="text/javascript">
 					//jQuery fade 
 					//setTimeout trigger en funksjon bare en gang
 					//setInterval trigger funksjonen igjen og igjen
 					//samme syntaks setInterval("function", milliseconds);
 
-
+					//jqueryFade(questionid) determines which question will be faded out and in
 					function jqueryFade(questionid)
 					{
 
 						$(document).ready(function() 
 						{ 
+							//list of questions id's
 							var questionArray = ["a1","a2","a3","a4","a5","a6","a7","a8","a9","a10"];
 							for(var i = 0; i < questionArray.length; i++){
 								var questionId = document.getElementById(questionArray[i]);
 
 
 							}
+							//create elements to be used
 							var a1 = document.getElementById("a1");
 							var a2 = document.getElementById("a2");
 							var a3 = document.getElementById("a3");
@@ -67,6 +71,7 @@ session_start();
 							else if(questionid == "a2"){
 								$(a2).fadeOut(fadeOutSpeed);
 								$(a3).delay(delay).fadeIn(fadeInSpeed);
+								loadImage(); 
 							}
 							else if(questionid == "a3"){
 								$(a3).fadeOut(fadeOutSpeed);
@@ -109,38 +114,73 @@ session_start();
 						
 					}
 
+				//loadImage() uses canvas to draw images and determines which image is to be loaded
+				//images are loaded from different server to save space and due to copyright(?), 
 				function loadImage()
 				{
-		            var c = document.getElementById("myCanvas");
-		            var context = c.getContext("2d");
+					//img one; erna
+		            var ca = document.getElementById("canvasOne");
+		            var contexta = ca.getContext("2d");
 
-		            var pic = new Image();
-		            pic.src = "http://blogg.nrk.no/lillasvalg/files/2009/09/erna-199x300.jpg";
-		            pic.addEventListener("load", function(){ context.drawImage(pic, 0, 0, c.width, c.height)}, false);
+		            var imgOne = new Image();
+					imgOne.src = "http://www.dagbladet.no/statsministerpoll/img/erna2.jpg";
+		            contexta.drawImage(imgOne, 15, 15, 260, 300);
+
+		            //img two; krf
+		            var cb = document.getElementById("canvasTwo");
+		            var contextb = cb.getContext("2d");
+
+		            var imgTwo = new Image();
+		            imgTwo.src = "https://www.holderdeord.no/uploads/party/logo/krf/44d3792bbf4e251f74ba35a5c43fe979.png";
+		            contextb.drawImage(imgTwo, 15, 15, 250, 250);
+
+		            //img three: sv
+		            var cc = document.getElementById("canvasThree");
+		            var contextc = cc.getContext("2d");
+		           
+		           	var imgThree = new Image();
+		            imgThree.src = "http://www.hoosays.com/files/classifieds/categories/ic256-community.png";
+		            contextc.drawImage(imgThree, 15, 15, 350, 300);
+		           	
+		           	//img four: venstre
+		           	var cd = document.getElementById("canvasFour");
+		            var contextd = cd.getContext("2d");
+		           
+		           	var imgFour = new Image();
+		            imgFour.src = "http://upload.wikimedia.org/wikipedia/commons/1/15/Lyspære.png";
+		            contextd.drawImage(imgFour, 15, 15, 350, 300);
+		       		
 
 	       		 }
 	        	 window.addEventListener("load", loadImage, false);
 						
 				
 		</script>
-		
+		<script src="http://code.jquery.com/jquery-1.4.4.min.js" type="text/javascript"></script>
+
+		<!--the question form, contains all questions, radio buttons and images, method="POST" because the result is calculated in the next page result.php-->
 		<form name="input" action="result.php" method="POST">
 			<div class="questions">
-				<div class="answers" id="a1">      
-					<p class="question">Når ble statsministeren født?</p>       
+				<div class="answers" id="a1"> 
+					<h2>Spørsmål: 1/10</h2>     
+					<p class="question">Når ble nåværende statsminister i Norge født?</p>       
 					<input type="radio" name="q1[]" value="0" id="q1a"><label for="q1a">1972</label><br/>          
 					<input type="radio" name="q1[]" value="0" id="q1b"><label for="q1b">1985</label><br/>            
 					<input type="radio" name="q1[]" value="1" id="q1c"><label for="q1c">1961</label><br/>            
 					<input type="radio" name="q1[]" value="0" id="q1d"><label for="q1d">1936</label><br/>    
 					<br/>
-					<input type="button" value="Neste" onclick="jqueryFade('a1')"> 
+					<input type="button" value="Neste" onclick="jqueryFade('a1')" OnMouseOver="green;"> 
 				</div>   
 
 				<div class="answers" id="a2"> 
-					<div class="selectSection">   
-						<p>Hvem er dette?</p> 
+					<h2>Spørsmål: 2/10</h2>
+					<p>Hvem er dette?</p> 
+						
 						<div class="questionPicture">
-							 <canvas id="myCanvas" height="350" width="260"></canvas>
+							<!--Cavas element one-->
+							 <canvas id="canvasOne" height="350" width="350"> 
+							 	Your browser does not support the &lt;canvas&gt; element.
+							 </canvas>
 						</div>   
 						<input type="radio" name="q2[]" value="0" id="q2a"><label for="q2a">Den norske dronningen</label><br/>           
 						<input type="radio" name="q2[]" value="1" id="q2b"><label for="q2b">Statsminister Erna Solberg</label><br/>            
@@ -148,11 +188,12 @@ session_start();
 						<input type="radio" name="q2[]" value="0" id="q2d"><label for="q2d">Kristine Berg, leder for Venstre parti</label><br/> 
 						<br/>   
 						<input type="button" value="Neste" onclick="jqueryFade('a2')"> 
-					</div>   
+					
 				</div>              
 
 				<div class="answers" id="a3">  
-				<p>Hvem er leder for AP?</p>            
+					<h2>Spørsmål: 3/10</h2>
+					<p>Hvem er leder for AP?</p>            
 					<input type="radio" name="q3[]" value="0" id="q3a"><label for="q3a">Finn Egil Holm</label><br/>            
 					<input type="radio" name="q3[]" value="0" id="q3b"><label for="q3b">Siv Jensen</label><br/>            
 					<input type="radio" name="q3[]" value="0" id="q3c"><label for="q3c">Erna Solberg</label><br/>           
@@ -163,6 +204,7 @@ session_start();
 	       
 
 				<div class="answers" id="a4">  
+					<h2>Spørsmål: 4/10</h2>
 					<p>Hvem er landets <em>nest</em> eldste partiorganisasjon?</p>          
 					<input type="radio" name="q4[]" value="0" id="q4a"><label for="q4a">Venstre</label><br/>            
 					<input type="radio" name="q4[]" value="0" id="q4b"><label for="q4b">Arbeiderpartiet</label><br/>            
@@ -173,6 +215,7 @@ session_start();
 				</div>               
 
 				<div class="answers" id="a5"> 
+					<h2>Spørsmål: 5/10</h2>
 					<p>Hva er mottoet til FrP?</p>            
 					<input type="radio" name="q5[]" value="0" id="q5a"><label for="q5a">"Lenge leve FrP"</label><br/>            
 					<input type="radio" name="q5[]" value="1" id="q5b"><label for="q5b">"For folk flest"</label><br/>            
@@ -184,7 +227,15 @@ session_start();
 	      
 
 				<div class="answers" id="a6">  
-					<p>Når ble Kristelig Folkeparti(KrF) stiftet?</p>            
+					<h2>Spørsmål: 6/10</h2>
+					
+					<p>Når ble Kristelig Folkeparti(KrF) stiftet?</p>  
+
+					<div class="questionPicture">
+							 <canvas id="canvasTwo" height="300" width="300"> 
+							 	Your browser does not support the &lt;canvas&gt; element.
+							 </canvas>
+					</div>            
 					<input type="radio" name="q6[]" value="1" id="q6a"><label for="q6a">1933</label><br/>            
 					<input type="radio" name="q6[]" value="0" id="q6b"><label for="q6b">1945</label><br/>            
 					<input type="radio" name="q6[]" value="0" id="q6c"><label for="q6c">1904</label><br/>            
@@ -195,6 +246,7 @@ session_start();
 	       
 
 				<div class="answers" id="a7"> 
+					<h2>Spørsmål: 7/10</h2>
 					<p>I hvilken by har Senterpartiet kontor?</p>            
 					<input type="radio" name="q7[]" value="0" id="q7a"><label for="q7a">Trondheim</label><br/>            
 					<input type="radio" name="q7[]" value="0" id="q7b"><label for="q7b">Stavanger</label><br/>            
@@ -205,7 +257,14 @@ session_start();
 				</div>                
 
 				<div class="answers" id="a8"> 
-					<p>Hva forbinder du med Sosialistisk Venstreparti(SV)?</p>           
+					<h2>Spørsmål: 8/10</h2>
+					<p>Hva forbinder du med Sosialistisk Venstreparti(SV)?</p> 
+
+					<div class="questionPicture">
+							 <canvas id="canvasThree" height="350" width="350"> 
+							 	Your browser does not support the &lt;canvas&gt; element.
+							 </canvas>
+					</div>            
 					<input type="radio" name="q8[]" value="0" id="q8a"><label for="q8a">Intolerante mennesker og svada-eksperter</label><br/>            
 					<input type="radio" name="q8[]" value="0" id="q8b"><label for="q8b">Terrorister og slavedrivere</label><br/>            
 					<input type="radio" name="q8[]" value="1" id="q8c"><label for="q8c">Sosialistisk, feministisk og antirasistisk</label><br/>            
@@ -216,18 +275,27 @@ session_start();
 	       
 
 				<div class="answers" id="a9"> 
+					<h2>Spørsmål: 9/10</h2>
 					<p>Hvilken farge har Miljøpartiet De Grønne(MDG) på logoen?</p>            
 					<input type="radio" name="q9[]" value="1" id="q9a"><label for="q9a">Grønn</label><br/>            
 					<input type="radio" name="q9[]" value="0" id="q9b"><label for="q9b">Blå</label><br/>            
 					<input type="radio" name="q9[]" value="0" id="q9c"><label for="q9c">Svart</label><br/>            
 					<input type="radio" name="q9[]" value="0" id="q9d"><label for="q9d">Lilla</label><br/> 
-					
+					<br/>
 					<input type="button" value="Neste" onclick="jqueryFade('a9')">        
 				</div>        
 	        
 
 				<div class="answers" id="a10">     
-					<p>Hvilken erklært ideologi har Venstre?</p>      
+					<h2>Spørsmål: 10/10</h2>
+					<p>Hvilken erklært ideologi har Venstre?</p>  
+
+					<div class="questionPicture">
+							<!--Cavas element one-->
+							 <canvas id="canvasFour" height="350" width="350"> 
+							 	Your browser does not support the &lt;canvas&gt; element.
+							 </canvas>
+					</div>       
 					<input type="radio" name="q10[]" value="0" id="q10a"><label for="q10a">Konservatisme</label><br/>            
 					<input type="radio" name="q10[]" value="0" id="q10b"><label for="q10b">Liberalisme</label><br/>            
 					<input type="radio" name="q10[]" value="0" id="q10c"><label for="q10c">Anarkisme</label><br/>            

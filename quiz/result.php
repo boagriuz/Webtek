@@ -7,13 +7,14 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="quiz_css.css" type="text/css">
-	
 	<title>Quiz Resultat</title>
-	<h1>Ditt resultat:</h1>
+	
 
 </head>
 
 <body>
+
+	<h1>Ditt resultat:</h1>
 	<?php
 
 		$name = $_SESSION['getName'];
@@ -72,7 +73,7 @@
 	
 	<form action="quiz.php">
 	<br/>
-    <input type="submit" value="Take Quiz again">
+    <input type="submit" value="Ta på nytt">
 	</form>
 	
 	
