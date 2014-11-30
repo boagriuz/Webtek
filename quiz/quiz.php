@@ -1,13 +1,12 @@
 <?php
 	session_start();
 ?>
-
+<!--php session to use the form-input from user in other pages (ex.g: name and age)-->
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Quiz</title>
 		<meta charset="UTF-8">
-		<!--<script src="quiz_js.js" type="text/JavaScript"></script>-->
 		<link rel="stylesheet" href="quiz_css.css" type="text/css">
 
 	</head>
@@ -23,7 +22,7 @@
 			<br/>
 		</div>
 	
-
+		<!--Create form with fieldset; name and age-->
 		<section id="personalia">
 			<fieldset>
 				<legend>Personalia:</legend>
