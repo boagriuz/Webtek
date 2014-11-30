@@ -124,7 +124,7 @@ session_start();
 
 		            var imgOne = new Image();
 					imgOne.src = "http://www.dagbladet.no/statsministerpoll/img/erna2.jpg";
-		            contexta.drawImage(imgOne, 15, 15, 260, 300);
+		            contexta.drawImage(imgOne, 15, 15, 230, 250);
 
 		            //img two; krf
 		            var cb = document.getElementById("canvasTwo");
@@ -169,19 +169,18 @@ session_start();
 					<input type="radio" name="q1[]" value="1" id="q1c"><label for="q1c">1961</label><br/>            
 					<input type="radio" name="q1[]" value="0" id="q1d"><label for="q1d">1936</label><br/>    
 					<br/>
-					<input type="button" value="Neste" onclick="jqueryFade('a1')" OnMouseOver="green;"> 
+					<input type="button" value="Neste" onclick="jqueryFade('a1')"> 
 				</div>   
 
 				<div class="answers" id="a2"> 
 					<h2>Spørsmål: 2/10</h2>
 					<p>Hvem er dette?</p> 
 						
-						<div class="questionPicture">
-							<!--Cavas element one-->
-							 <canvas id="canvasOne" height="350" width="350"> 
-							 	Your browser does not support the &lt;canvas&gt; element.
-							 </canvas>
-						</div>   
+						<!--Cavas element one-->
+						<canvas id="canvasOne" height="350" width="350"> 
+							Your browser does not support the &lt;canvas&gt; element.
+					    </canvas>
+						<br/>
 						<input type="radio" name="q2[]" value="0" id="q2a"><label for="q2a">Den norske dronningen</label><br/>           
 						<input type="radio" name="q2[]" value="1" id="q2b"><label for="q2b">Statsminister Erna Solberg</label><br/>            
 						<input type="radio" name="q2[]" value="0" id="q2c"><label for="q2c">Tone Damli</label><br/>           

@@ -15,17 +15,20 @@
 <body>
 
 	<h1>Ditt resultat:</h1>
+
 	<?php
 
-		$name = $_SESSION['getName'];
+		$name = $_SESSION['getName'];  //Use session to get name from start-form
 			
 		
 		echo "<br/>";
 		$points = 0; 
 		$numChecked = 0;
 
+		//create array of question id's
 		$checkBoxNames = array("q1","q2","q3","q4","q5","q6","q7","q8","q9","q10");
 
+		//loop through all, if they are checked add 1 to numChecked and if the answere is correct add 1 to points
 		for($x = 0; $x < sizeof($checkBoxNames); $x++)
 		{
 			if(!empty($_POST[$checkBoxNames[$x]])) 
@@ -42,6 +45,8 @@
 
 		
 		}
+
+		//echo the result depending on the users score
 
 		echo "<strong>Du svarte på " . $numChecked . " spørsmål og fikk " . $points . " av 10 poeng</strong>"; 
 		echo "<br/>";
@@ -70,10 +75,10 @@
 
 	?>
 
-	
+	<!--Take quiz again button-->
 	<form action="quiz.php">
-	<br/>
-    <input type="submit" value="Ta på nytt">
+		<br/>
+   		<input type="submit" value="Ta på nytt">
 	</form>
 	
 	
